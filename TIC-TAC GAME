@@ -1,0 +1,210 @@
+#include <iostream>
+using namespace std;
+
+char matrix[3][3] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+char player = 'X';
+int count;
+
+void Draw()                                                                        //create the layout for the game
+{
+	cout << "     |     |     " << endl;
+	cout << "  " << matrix[0][0]  << "  |  " << matrix[0][1] << "  |  " << matrix[0][2]  << endl;
+ 
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+
+	cout << "  " << matrix[1][0]  << "  |  " << matrix[1][1]  << "  |  " <<matrix[1][2]  << endl;
+
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |     " << endl;
+
+	cout << "  " << matrix[2][0] << "  |  " << matrix[2][1] << "  |  " << matrix[2][2] << endl;
+
+	cout << "     |     |     " << endl << endl;
+}
+void Input()                                                                       // taking user input
+{
+	int a;                                                                     //local variable declared
+	cout << "Its "<<player<<" turn's Enter the number of the field: ",player;  //printing message for user
+	cin >> a; 								   //input from user
+	
+	if (a == 1)								   //checking condition (what user is entering)	
+		if (matrix[0][0]=='1')                                             //checking condition for valid user input
+			matrix[0][0] = player;
+		else
+			{
+			cout << "\nInvalid move :-( \n";                           //message on invalid input
+				count=count-1;                                     //count-1 for tracking users input
+	
+			}
+	else if (a == 2)
+		if (matrix[0][1]=='2')
+			matrix[0][1] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+				
+			}
+	else if (a == 3)
+		if (matrix[0][2]=='3')
+			matrix[0][2] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+		
+	else if (a == 4)
+	        if (matrix[1][0]=='4')
+			matrix[1][0] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+	else if (a == 5)
+		  if (matrix[1][1]=='5')
+			matrix[1][1] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+		
+	else if (a == 6)
+  		if (matrix[1][2]=='6')
+			matrix[1][2] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+		
+	else if (a == 7)
+		  if (matrix[2][0]=='7')
+			matrix[2][0] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+		
+	else if (a == 8)
+		  if (matrix[2][1]=='8')
+			matrix[2][1] = player;
+		else
+			{
+			cout << "\nInvalid move :-(  \n";
+				count=count-1;
+			}
+		
+	else if (a == 9)
+		  if (matrix[2][2]=='9')
+			matrix[2][2] = player;
+		else
+			{
+			cout << "\nInvalid move :-( \n";
+				count=count-1;
+			}
+}
+
+void cuser()                                                                      //function for switching user                                           
+{
+	if (player == 'X')                                                      //condition for switching
+	{
+	 
+		player = 'O';                                                   
+		
+	}
+
+	else
+	{	
+		player = 'X';
+		
+	}
+}
+
+char Winner()                                                                   //function for getting winner of the game
+{
+	                                                                        //condition for selecting first player as winner
+	if (matrix[0][0] == 'X' && matrix[0][1] == 'X' && matrix[0][2] == 'X')
+		return 'X';
+	if (matrix[1][0] == 'X' && matrix[1][1] == 'X' && matrix[1][2] == 'X')
+		return 'X';
+	if (matrix[2][0] == 'X' && matrix[2][1] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+
+	if (matrix[0][0] == 'X' && matrix[1][0] == 'X' && matrix[2][0] == 'X')
+		return 'X';
+	if (matrix[0][1] == 'X' && matrix[1][1] == 'X' && matrix[2][1] == 'X')
+		return 'X';
+	if (matrix[0][2] == 'X' && matrix[1][2] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+
+	if (matrix[0][0] == 'X' && matrix[1][1] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+	if (matrix[2][0] == 'X' && matrix[1][1] == 'X' && matrix[0][2] == 'X')
+		return 'X';
+
+	                                                                           //condition for selecting second player as winner
+	if (matrix[0][0] == 'O' && matrix[0][1] == 'O' && matrix[0][2] == 'O')
+		return 'O';
+	if (matrix[1][0] == 'O' && matrix[1][1] == 'O' && matrix[1][2] == 'O')
+		return 'O';
+	if (matrix[2][0] == 'O' && matrix[2][1] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+
+	if (matrix[0][0] == 'O' && matrix[1][0] == 'O' && matrix[2][0] == 'O')
+		return 'O';
+	if (matrix[0][1] == 'O' && matrix[1][1] == 'O' && matrix[2][1] == 'O')
+		return 'O';
+	if (matrix[0][2] == 'O' && matrix[1][2] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+
+	if (matrix[0][0] == 'O' && matrix[1][1] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+	if (matrix[2][0] == 'O' && matrix[1][1] == 'O' && matrix[0][2] == 'O')
+		return 'O';
+
+	return '/';                                                                  //function returns value
+}
+
+int main()                                                                                     //main function 
+{
+	count=0;
+	cout << "*****************************************************************************\n";	
+	cout << "\n Tic Tac Game version 1.0 Developed By Ankit Singh \n\n";
+	cout << "*****************************************************************************\n\n";
+	Draw();                                                                                 //printing the layout of tic tac board
+	while (1)
+	{
+		count++;                                                                       //counts the number of input		
+ 		Input();
+		Draw();
+		if (Winner() == 'X')                                                      //winner =X
+		{
+			cout << "_____________________________RESULT_________________________________________\n\n";
+			cout << " Player X wins! :-)\n\n";
+			break;
+		}
+		else if (Winner() == 'O')                                                       //winner =0
+		{
+			cout << "_____________________________RESULT___________________________________________\n\n";
+			cout << " Player O wins! :-) \n\n";
+			break;
+		}
+		else if (Winner() == '/'&& count==9)                                           // match drow condition 
+		{
+			cout << "_____________________________RESULT___________________________________________\n\n";
+			cout << "Draw please try again :-( \n\n";
+			break;
+		}
+
+
+		cuser();                                                                      //swaping of user
+	}
+	
+	return 0;
+
+}                                                                                                       //end of program
